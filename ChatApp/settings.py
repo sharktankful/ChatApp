@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'chat',
     'channels',
     'daphne',
     'django.contrib.admin',
@@ -72,6 +73,18 @@ TEMPLATES = [
 WSGI_APPLICATION = 'ChatApp.wsgi.application'
 ASGI_APPLICATION = 'ChatApp.asgi.application'
 
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [('127.0.0.1', 6379)]
+        }
+    }
+}
+
+LOGIN_REDIRECT_URL = 'chat-page'
+
+LOGOUT_REDIRECT_URL = 'login-user'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases

@@ -14,9 +14,9 @@ class ChatConsumer(AsyncWebsocketConsumer):
     
     # removes user from the websocket/group
     async def disconnect(self, close_code):
-        await self.channel_layer.group_discord(
+        await self.channel_layer.group_discard(
             self.roomGroupName,
-            self.channel_layer
+            self.channel_name
         )
     
     # Recieves text data from the websocket and sends it to others in the group chat
@@ -26,7 +26,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         username = text_data_json['username']
         await self.channel_layer.group_send(
             self.roomGroupName, {
-                'type': 'sendmessage',
+                'type': 'sendMessage',
                 'message': message,
                 'username': username
             }
@@ -36,4 +36,4 @@ class ChatConsumer(AsyncWebsocketConsumer):
     async def sendMessage(self, event):
         message = event['message']
         username = event['username']
-        await self.send(text_data= json.dumps({'message':message, 'username':username}))
+        await self.send(text_data = json.dumps({'message':message, 'username':username}))
