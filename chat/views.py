@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from chat.forms import NewUserForm
-from django.contrib.auth import login
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 
 
@@ -11,14 +11,18 @@ def chatPage(request, *args, **kwargs):
     context = {}
     return render(request, 'chat/chatPage.html', context)
 
-def register_request(request):
-    if request.method == "POST":
-        form = NewUserForm(request.POST)
+def register_user(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save()
+            form.save()
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            user = authenticate(username=username, password=password)
             login(request, user)
-            messages.success(request, "Registration successful." )
-            return redirect("chat-page")
-        messages.error(request, "Unsuccessful registration. Invalid information.")
-    form = NewUserForm()
-    return render (request=request, template_name="chat/register.html", context={"register_form":form})
+            messages.success(request, ('Registration Successful!'))
+            return redirect('chat-page')
+    else:
+        form = UserCreationForm()
+    return render(request, 'chat/register_user.html', {'form': form})
+

@@ -6,12 +6,20 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          {% if request.user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'logout-user' %}">Logout</a>
+          </li>
+          {% endif %}
+          
+          {% if not request.user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'register' %}">Register</a>
           </li>        
           <li class="nav-item">
-            <a class="nav-link" href="#">Register</a>
+            <a class="nav-link" href="{% url 'login-user' %}">Login</a>
           </li>        
+          {% endif %} 
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Find other people" aria-label="Search">

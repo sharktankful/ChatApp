@@ -9,5 +9,5 @@ urlpatterns = [
     # Login-section
     path('auth/login/', LoginView.as_view(template_name='chat/LoginPage.html'), name='login-user'),
     path('auth/logout/', LogoutView.as_view(), name='logout-user'),
-    path('register/', chat_views.register_request, name='register')
+    path('register/', chat_views.register_user, name='register')
 ]
