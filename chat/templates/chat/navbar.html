@@ -8,6 +8,9 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           {% if request.user.is_authenticated %}
           <li class="nav-item">
+            <a class="nav-link" href="{% url 'profile-list' %}">Profile List</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="{% url 'logout-user' %}">Logout</a>
           </li>
           {% endif %}
@@ -21,6 +24,11 @@
           </li>        
           {% endif %} 
         </ul>
+
+        {% if request.user.is_authenticated %}
+        <img src="{{ user.profile.profile_pic.url }}" width="40" height="40" class="rounded-circle" style="object-fit: cover; margin-right: 10px">
+        {% endif %}
+
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Find other people" aria-label="Search">
           <button class="btn btn-outline-light" type="submit">Search</button>
