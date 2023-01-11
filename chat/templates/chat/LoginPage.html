@@ -10,13 +10,15 @@
     <title>Login Page</title>
 </head>
 <body>
-    <h1>Login</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <br>
-        <button type="submit">Login</button>
-    </form>
+    <div style="margin-left: 30px;">
+        <h1>Login</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <br>
+            <button type="submit">Login</button>
+        </form>
+    </div>
 </body>
 </html>
 {% endblock content %}
