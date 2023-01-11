@@ -56,3 +56,17 @@ body {
     transition: 0.3s;
 }
 
+.emptyText {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.5rem;
+}
+
+.message {
+    background-color: #71aeeb;
+    color: white;
+    width: 35%;
+    padding: 8px;
+    border-radius: 2em;
+    margin: 15px 0px;
+    font-family: 'Poppins', sans-serif; 
+}

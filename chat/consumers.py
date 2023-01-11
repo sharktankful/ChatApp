@@ -28,7 +28,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
             self.roomGroupName, {
                 'type': 'sendMessage',
                 'message': message,
-                'username': username
+                'username': username,
             }
         )
     

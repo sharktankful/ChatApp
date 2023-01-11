@@ -28,9 +28,6 @@
     <center> Logout the chat Page <a href = "{% url 'logout-user' %}">Logout</a></center>
     {% endif %}
     <br />
-
-    <br />
-    <br />
   </div>
 
   <div class="container">
@@ -41,7 +38,6 @@
     <input class="textInput" type="text" id="id_message_send_input" />
     <button class="button" type="submit" id="id_message_send_button">Send Message</button>
   </div>
-  
 
 
       <script>
@@ -59,15 +55,18 @@
         chatSocket.onopen = function (e) {
           console.log("The connection was setup successfully !");
         };
+
         chatSocket.onclose = function (e) {
           console.log("Something unexpected happened !");
         };
+
         document.querySelector("#id_message_send_input").focus();
         document.querySelector("#id_message_send_input").onkeyup = function (e) {
           if (e.keyCode == 13) {
             document.querySelector("#id_message_send_button").click();
           }
         };
+
         document.querySelector("#id_message_send_button").onclick = function (e) {
           var messageInput = document.querySelector(
             "#id_message_send_input"
@@ -78,20 +77,23 @@
 
         chatSocket.onmessage = function (e) {
           const data = JSON.parse(e.data);
-          const messageElement = document.createElement('div')
-          messageElement.innerText = data.message
+          const messageElement = document.createElement('div');
+          const username = data.username;
+          messageElement.innerText = username + " : " + data.message;
           messageElement.className = 'message'
+
+
           chatLog.appendChild(messageElement)
 
           if (document.querySelector('#emptyText')) {
             document.querySelector('#emptyText').remove()
           }
 
-          var div = document.createElement("div");
-          div.innerHTML = data.username + " : " + data.message;
+          //var div = document.createElement("div");
+          //div.innerHTML = data.username + " : " + data.message;
 
-          document.querySelector("#id_message_send_input").value = "";
-          document.querySelector("#id_chat_item_container").appendChild(div);
+          //document.querySelector("#id_message_send_input").value = "";
+          //document.querySelector("#id_chat_item_container").appendChild(div);
         };
       </script>
   </body>
