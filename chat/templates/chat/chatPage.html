@@ -16,15 +16,10 @@
     id="id_chat_item_container"
     style="font-size: 20px"
     >
-    <center><h1 class="heading">Hello, Welcome To My Chat Site! {{request.user}}</h1></center>
-    <br>
-    {% if request.user.is_authenticated  %}
-    <center> Logout the chat Page <a href = "{% url 'logout-user' %}">Logout</a></center>
-    {% endif %}
-    <br />
+    <center><h1 class="heading">LIVE CHAT</h1></center>
   </div>
 
-  <div class="container">
+  <div class="container chatbox" id="chat-feed">
     <div id="chat-log"></div>
   </div>
 
@@ -34,8 +29,15 @@
   </div>
 
       {{ request.user.id|json_script:"user_id" }}
+
+
+
+
+
+
+
       <script>
-        const chatLog = document.querySelector('#chat-log')
+        const chatLog = document.querySelector('#chat-log');
         const chatSocket = new WebSocket("ws://" + window.location.host + "/");
 
         if (!chatLog.hasChildNodes()) {
@@ -44,7 +46,7 @@
           emptyText.innerText = 'No Messages'
           emptyText.className = 'empty Text'
           chatLog.appendChild(emptyText)
-        }
+        };
 
         chatSocket.onopen = function (e) {
           console.log("The connection was setup successfully !");
@@ -62,10 +64,10 @@
         };
 
         document.querySelector("#id_message_send_button").onclick = function (e) {
-          var messageInput = document.querySelector(
-            "#id_message_send_input"
-          ).value;
-          chatSocket.send(JSON.stringify({ message: messageInput, username : "{{request.user.username}}"}));
+          var messageInput = document.querySelector("#id_message_send_input");
+          message = messageInput.value;
+          chatSocket.send(JSON.stringify({ message: message, username : "{{request.user.username}}"}));
+          messageInput.value = "";
         };
 
 

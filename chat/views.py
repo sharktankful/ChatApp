@@ -29,6 +29,5 @@ def register_user(request):
         form = UserCreationForm()
     return render(request, 'chat/register_user.html', {'form': form})
 
-def profile_list(request):
-    return render(request, 'chat/profile_list.html')
-
+def profilePage(request):
+    return render(request, 'chat/profilePage.html')

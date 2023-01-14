@@ -15,6 +15,7 @@ urlpatterns = [
     # Register-section
     path('register/', chat_views.register_user, name='register'),
 
-    # Profile List
-    path('profile_list/', chat_views.profile_list, name='profile-list')
+    #Profile-section
+    path('profilePage/', chat_views.profilePage, name='profile')
+
 ]

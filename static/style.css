@@ -7,7 +7,8 @@ body {
 
 .container {
     width: 50vw;
-    margin: 50px auto;
+    height: 20vh;
+    margin: 30px auto;
     padding: 25px 10px;
     background-color: white;
     border-radius: 3px;
@@ -15,9 +16,15 @@ body {
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
 
+.chatbox {
+    height: 55vh;
+    margin-top: 20px;
+    overflow: scroll;
+}
+
 .heading {
     font-weight: 'Works Sans', sans-serif;
-    /* font-size: 1.5rem; */
+    font-size: 1.5rem;
 }
 
 .textInput {
@@ -40,7 +47,7 @@ body {
     color: #9a4ef1;
     border: 0.16em solid #9a4ef1;
     border-radius: 2em;
-    padding: 15px 32px;
+    padding: 10px 32px;
     text-align:  center;
     text-decoration: none;
     display: inline-block;
@@ -48,6 +55,7 @@ body {
     cursor: pointer;
     transition: 0.3s;
     width: 50%;
+    margin-top: -20%;
 }
 
 .button:hover {
