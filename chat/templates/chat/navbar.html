@@ -10,6 +10,9 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'logout-user' %}">Logout</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+          </li>
           {% endif %}
           
           {% if not request.user.is_authenticated %}
@@ -25,7 +28,7 @@
         
         {% if request.user.is_authenticated %}
         <div class= 'navbar-brand hidden-xs collapse navbar-collapse justify-content-end'> 
-          Welcome {{request.user}}!
+          Welcome {{user.first_name}}!
         </div>
         <a href="{% url 'profile' %}">
           <img src="{{ user.profile.profile_pic.url }}" width="40" height="40" class="rounded-circle" style="object-fit: cover; margin-right: 10px">

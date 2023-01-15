@@ -11,7 +11,31 @@
 </head>
 <body>
     
-    
+    <div style="text-align: center">
+        <h1 style="font-size: 50px;">Profile Page</h1>
+        <br><br><br>
+
+        <div style="font-size: 20px; margin-left: 27%">
+            <img src="{{ user.profile.profile_pic.url }}" width="400" height="400" alt="Account Image" class="account-img" style="object-fit: cover; float:left">
+            <br>
+
+            <div style="font-size: 28px; float: left; margin-left: 10%; text-align: left">
+                <p><b>First Name: </b>{{ user.first_name }}</p>
+                <br>
+                <p><b>Last Name: </b>{{ user.last_name }}</p>
+                <br>
+                <p><b>UserName: </b>{{ user.username }}</p>
+                <br>
+                <p><b>Email: </b>{{ user.email }}</p>
+                <br>
+                <a href="{% url 'chat-page' %}">
+                    <button type="button" class="btn btn-warning" style="font-weight: bold; font-size:20px">EDIT PROFILE</button>
+                </a>
+                <br>
+            </div>
+
+        </div>
+    </div>
 
 </body>
 </html>
