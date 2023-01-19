@@ -19,6 +19,6 @@ urlpatterns = [
     path('profilePage/', chat_views.profilePage, name='profile'),
     
     #Profile-section
-    path('edit_Profile_Page/', chat_views.EditProfilePage, name='EditProfile')
+    # path('edit_Profile_Page/', chat_views.EditProfilePage, name='EditProfile')
 
 ]

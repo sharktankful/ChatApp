@@ -32,7 +32,7 @@ def register_user(request):
 def profilePage(request):
     return render(request, 'chat/profilePage.html')
 
-def EditProfilePage(request):
-    return render(request, 'chat/editProfile.html')
+# def EditProfilePage(request):
+#     return render(request, 'chat/editProfile.html')
 
 
